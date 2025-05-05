@@ -69,6 +69,7 @@
             background-color: #c02752;
         }
 
+        /* Heart animation */
         .heart-container {
             position: absolute;
             width: 100%;
@@ -121,12 +122,13 @@
             I'm deeply sorry for the pain I caused. Please know it was never my intention.</p>
             <p>You mean the world to me, and I can't imagine my days without you.  
             If I could turn back time, I would—but all I can do now is ask for your forgiveness.</p>
-            <p>With all my heart, I'm asking you to give me another chance.  
-            I promise to be better—for you, for us.</p>
-            <p>Always yours,<br><strong>[asodek]</strong></p>
+            <p>With all my heart, am sorry.  
+            I promise to be better—for you farachti , for us.</p>
+            <p>Always yours, <br><strong>[asodek]</strong></p>
 
+            <!-- New button to trigger animation -->
             <button id="showLoveButton">Show Love Animation</button>
-            <div class="love-message" id="loveMessage">I Love You ❤️</div>
+            <div class="love-message" id="loveMessage">nhbk  ❤️</div>
         </div>
     </div>
 
@@ -147,9 +149,12 @@
         function createHeart() {
             const heart = document.createElement('div');
             heart.classList.add('heart');
+
             heart.style.left = Math.random() * 100 + 'vw';
             heart.style.top = '80%';
+
             heartContainer.appendChild(heart);
+
             setTimeout(() => {
                 heart.remove();
             }, 2000);

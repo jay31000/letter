@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A Letter for You</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #fff0f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        body::before {
+            content: "♥";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 50px;
+            color: #ff4d6d;
+            z-index: -1;
+            pointer-events: none;
+            animation: heartAnimation 10s linear infinite;
+        }
+        @keyframes heartAnimation {
+            0% {
+                transform: translateX(0) translateY(0);
+            }
+            100% {
+                transform: translateX(500px) translateY(500px);
+            }
+        }
+        .letter-container {
+            text-align: center;
+            max-width: 600px;
+            margin: 20px;
+        }
+        .letter {
+            background: #fff;
+            padding: 20px;
+            border: 2px solid #f08080;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            display: none;
+            transition: all 0.5s ease;
+        }
+        h1 {
+            color: #d6336c;
+        }
+        button {
+            background-color: #d6336c;
+            color: #fff;
+            font-size: 16px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #c02752;
+        }
+
+        .heart-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            top: 0;
+            left: 0;
+        }
+
+        .heart {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            background: url("heart.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            animation: fly 2s ease-in-out forwards;
+        }
+
+        @keyframes fly {
+            0% {
+                transform: translate(0, 0) scale(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50px, -300px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .love-message {
+            display: none;
+            font-size: 2em;
+            color: crimson;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="letter-container">
+        <button id="openLetterButton">Open the Letter</button>
+        <div class="letter" id="letter">
+            <h1>I'm Sorry</h1>
+            <p>My love,</p>
+            <p>I know I made a mistake, and I hurt you in ways I never meant to.  
+            I'm deeply sorry for the pain I caused. Please know it was never my intention.</p>
+            <p>You mean the world to me, and I can't imagine my days without you.  
+            If I could turn back time, I would—but all I can do now is ask for your forgiveness.</p>
+            <p>With all my heart, I'm asking you to give me another chance.  
+            I promise to be better—for you, for us.</p>
+            <p>Always yours,<br><strong>[asodek]</strong></p>
+
+            <button id="showLoveButton">Show Love Animation</button>
+            <div class="love-message" id="loveMessage">I Love You ❤️</div>
+        </div>
+    </div>
+
+    <div class="heart-container" id="heartContainer"></div>
+
+    <script>
+        const openLetterButton = document.getElementById('openLetterButton');
+        const letter = document.getElementById('letter');
+        const showLoveButton = document.getElementById('showLoveButton');
+        const heartContainer = document.getElementById('heartContainer');
+        const loveMessage = document.getElementById('loveMessage');
+
+        openLetterButton.addEventListener('click', () => {
+            letter.style.display = 'block';
+            openLetterButton.style.display = 'none';
+        });
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = '80%';
+            heartContainer.appendChild(heart);
+            setTimeout(() => {
+                heart.remove();
+            }, 2000);
+        }
+
+        let heartInterval;
+
+        showLoveButton.addEventListener('click', () => {
+            heartInterval = setInterval(createHeart, 300);
+            loveMessage.style.display = 'block';
+            showLoveButton.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
